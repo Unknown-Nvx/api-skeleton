@@ -6,9 +6,9 @@ const router = express.Router();
 const keys = require('../models/Keys');
 const Keys = new keys();
 
-const apiKeyAuth = (req, res, next) => {
+const apiKeyAuth = (req, res, next) => {  // middleware to check if the request have an API Key
+    let keysList = []; //tmp
     const key = req.query.id;
-    const keysList = ["123456", "azerty", "987654"];
     const keyIsValid = keysList.includes(key);
 
     if (!keyIsValid) {
@@ -22,11 +22,11 @@ router.get('/', apiKeyAuth, (req, res, next) => {
     require('../routes/home')(req, res);
 })
 
-router.get('/second', (req, res, next) => {
+router.get('/second', apiKeyAuth, (req, res, next) => {
     res.json({ message: "second page" });
 })
 
-router.get('/third', (req, res, next) => {
+router.get('/third', apiKeyAuth, (req, res, next) => {
     res.json({ message: "third page" });
 })
 
