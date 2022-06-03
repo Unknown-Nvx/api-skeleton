@@ -8,11 +8,11 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/second', (req, res, next) => {
-    res.json({ message: "second page" });
+    res.json({ message: "second route" });
 })
 
 router.get('/third', (req, res, next) => {
-    res.json({ message: "third page" });
+    res.json({ message: "third route" });
 })
 
 module.exports = router;
