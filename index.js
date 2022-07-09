@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.use('/', require('./controllers/controller'));
+const router = require('./src/router');
+app.use(router);
 
 app.listen(3000);
